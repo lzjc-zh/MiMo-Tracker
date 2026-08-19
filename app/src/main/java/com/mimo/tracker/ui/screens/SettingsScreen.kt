@@ -1,5 +1,7 @@
 package com.mimo.tracker.ui.screens
 
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -13,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -73,18 +76,26 @@ fun SettingsScreen(
         Spacer(modifier = Modifier.height(16.dp))
 
         // About Section
+        val context = LocalContext.current
+        val repoUrl = "https://github.com/lzjc-zh/MiMo-Tracker"
+        val releasesUrl = "$repoUrl/releases"
+
         SettingsSection(title = "关于") {
             SettingsItem(
                 icon = Icons.Default.Info,
                 title = "MiMo Tracker",
-                subtitle = "版本 1.0.0",
-                onClick = {}
+                subtitle = "版本 1.0.0 · 点击检查更新",
+                onClick = {
+                    context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(releasesUrl)))
+                }
             )
             SettingsItem(
                 icon = Icons.Default.Code,
                 title = "开源地址",
-                subtitle = "GitHub",
-                onClick = {}
+                subtitle = "github.com/lzjc-zh/MiMo-Tracker",
+                onClick = {
+                    context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(repoUrl)))
+                }
             )
         }
 
