@@ -398,7 +398,7 @@ fun ModelComparisonCard(data: List<DailyDataPoint>) {
                             TooltipRow("请求", "${total.requestCount} 次")
                             TooltipRow("缓存命中率", if (total.inputToken > 0)
                                 String.format("%.1f%%", total.cacheToken * 100.0 / total.inputToken) else "0%",
-                                hint = "缓存Token ÷ 输入Token")
+                                hint = "缓存命中 ÷ 总输入(缓存+未命中)")
                         }
                     }
                 }
