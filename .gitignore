@@ -15,3 +15,6 @@ local.properties
 *.keystore
 /.kotlin
 /app/release
+*.png
+*.jpg
+logcat_output.txt
